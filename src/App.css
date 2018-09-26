@@ -1,28 +1,32 @@
-.App {
-  text-align: center;
+.container {
+    width: 100%;
+    text-align: center;
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.puzzle {
+    width: 350px;
+    height: 350px;
+    border: black solid;
+    background-color: black;
+
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.puzzle--square-empty, .puzzle--square-pair, .puzzle--square-odd {
+    width: 79px;
+    height: 79px;
+    display: inline-block;
+    cursor: pointer;
+    border: black solid;
+    border-radius: 2px;
+    margin: 1px;
+
 }
 
-.App-title {
-  font-size: 1.5em;
+.puzzle--square-pair {
+    background-color: #FFFF00;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.puzzle--square-odd {
+    background-color: #F5F5F5;
 }

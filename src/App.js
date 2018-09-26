@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  render() {
+  constructor(props) {
+  super(props);
+
+  this.state = {
+    puzzle:[],
+  };
+}
+displayPuzzle() {
+    const {puzzle} = this.state;
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className='puzzle'>
+        {puzzle.map((square, i) =>
+          <div key={i} className={this.getSquareClassName(square)} onClick={() => this.shift(i)}>
+            {!!square ? square : 'empty'}
+          </div>
+        )}
       </div>
     );
   }
+
+  render() {
+  return (
+   <div className='container'>
+      <div className='App'>
+        {this.displayPuzzle()}
+
+    </div>
+    </div>
+  );
+}
 }
 
 export default App;
