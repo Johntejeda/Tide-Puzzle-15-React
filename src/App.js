@@ -30,7 +30,7 @@ displayPuzzle() {
         {this.displayPuzzle()}
 
     </div>
-    </div>
+      </div>
   );
 }
 }

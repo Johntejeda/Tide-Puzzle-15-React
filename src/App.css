@@ -1,9 +1,19 @@
-.container {
-    width: 100%;
-    text-align: center;
-
+body{
+  background-image: url(https://cdn.instructables.com/FIU/5J1Q/JFUAHO1C/FIU5J1QJFUAHO1C.LARGE.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #bf4040;
 }
 
+
+.container {
+
+    margin-top: 150px;
+    margin-left: 400px;
+    width: 50%;
+    padding:20px;
+    text-align: center;
+}
 .puzzle {
     width: 350px;
     height: 350px;
