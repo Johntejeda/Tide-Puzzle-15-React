@@ -22,13 +22,42 @@ displayPuzzle() {
       </div>
     );
   }
+
   getSquareClassName(value) {
-  if(!value){
-    return 'puzzle--square-empty';
+    if(!value){
+      return 'puzzle--square-empty';
+    }
+
+    return value % 2 === 0 ? 'puzzle--square-pair' : 'puzzle--square-odd'
   }
 
-  return value % 2 === 0 ? 'puzzle--square-pair' : 'puzzle--square-odd'
-}
+  shift(index) {
+    const {puzzle} = this.state;
+    //Left square
+    if (index % 4 !== 0 && puzzle[index - 1] === false) {
+      puzzle[index - 1] = puzzle[index];
+      puzzle[index] = false;
+    }
+    //Right square
+    else if ((index + 1) % 4 !== 0 && puzzle[index + 1] === false) {
+      puzzle[index + 1] = puzzle[index];
+      puzzle[index] = false;
+    }
+    //Up square
+    else if (index > 3 && puzzle[index - 4] === false) {
+      puzzle[index - 4] = puzzle[index];
+      puzzle[index] = false;
+    }
+    //Down square
+    else if (index < 12 && puzzle[index + 4] === false) {
+      puzzle[index + 4] = puzzle[index];
+      puzzle[index] = false;
+    }
+
+    this.setState({puzzle: puzzle});
+  }
+
+
 
   render() {
   return (
