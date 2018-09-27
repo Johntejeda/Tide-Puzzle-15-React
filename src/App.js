@@ -6,7 +6,7 @@ class App extends Component {
   super(props);
 
   this.state = {
-    puzzle:[],
+    puzzle:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,false],
   };
 }
 displayPuzzle() {
@@ -22,6 +22,13 @@ displayPuzzle() {
       </div>
     );
   }
+  getSquareClassName(value) {
+  if(!value){
+    return 'puzzle--square-empty';
+  }
+
+  return value % 2 === 0 ? 'puzzle--square-pair' : 'puzzle--square-odd'
+}
 
   render() {
   return (
