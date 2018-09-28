@@ -9,6 +9,32 @@ class App extends Component {
     puzzle:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,false],
   };
 }
+shuffle(puzzle) {
+    const min = 0;
+    const max = puzzle.length - 1;
+
+    puzzle.forEach((square, i) => {
+      const swapSquareIndex = this.getRandomInt(min, max);
+      [puzzle[swapSquareIndex], puzzle[i]] = [puzzle[i], puzzle[swapSquareIndex]];
+    });
+
+    return puzzle;
+  }
+
+  generateShufflePuzzle(puzzle) {
+    let newPuzzle = [];
+    for (var i = 1; i <= puzzle.length - 1; i++) {
+      newPuzzle.push(i);
+    }
+    newPuzzle.push(false);
+
+    return this.shuffle(newPuzzle);
+  }
+
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
 displayPuzzle() {
     const {puzzle} = this.state;
 
