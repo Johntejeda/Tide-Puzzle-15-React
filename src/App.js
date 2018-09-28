@@ -4,7 +4,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
   super(props);
-
+  
   this.state = {
     puzzle: this.generateShufflePuzzle(props.successPuzzle)
   };
@@ -106,6 +106,12 @@ displayPuzzle() {
       <div className='App'>
         {this.displayPuzzle()}
         {this.success() && <div>YOU ARE A WINER</div>}
+        <div>
+        <button  onClick={()=>this.generateShufflePuzzle(this.state.puzzle)}> PLAY
+
+
+      </button>
+        </div>
 
     </div>
       </div>
