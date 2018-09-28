@@ -6,7 +6,7 @@ class App extends Component {
   super(props);
 
   this.state = {
-    puzzle:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,false],
+    puzzle: this.generateShufflePuzzle(props.successPuzzle)
   };
 }
 shuffle(puzzle) {
@@ -82,6 +82,21 @@ displayPuzzle() {
 
     this.setState({puzzle: puzzle});
   }
+  success() {
+    const { puzzle } = this.state;
+    const { successPuzzle } = this.props;
+    let isWon = true;
+
+    successPuzzle.every((square, i) => {
+      if (square !== puzzle[i]) {
+        isWon = false;
+        return;
+      }
+    });
+
+    return isWon;
+  }
+
 
 
 
@@ -90,6 +105,7 @@ displayPuzzle() {
    <div className='container'>
       <div className='App'>
         {this.displayPuzzle()}
+        {this.success() && <div>YOU ARE A WINER</div>}
 
     </div>
       </div>
