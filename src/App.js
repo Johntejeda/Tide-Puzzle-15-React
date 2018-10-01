@@ -4,11 +4,18 @@ import './App.css';
 class App extends Component {
   constructor(props) {
   super(props);
-  
+
   this.state = {
-    puzzle: this.generateShufflePuzzle(props.successPuzzle)
+    puzzle: this.props.successPuzzle
   };
+  this.generateShufflePuzzle = this.generateShufflePuzzle.bind(this)
+  this.shuffle = this.shuffle.bind(this)
 }
+
+/*componentDidMount() {
+  // this.generateShufflePuzzle(this.props.successPuzzle)
+}*/
+
 shuffle(puzzle) {
     const min = 0;
     const max = puzzle.length - 1;
@@ -28,7 +35,9 @@ shuffle(puzzle) {
     }
     newPuzzle.push(false);
 
-    return this.shuffle(newPuzzle);
+    this.setState({
+      puzzle: this.shuffle(newPuzzle)
+    })
   }
 
   getRandomInt(min, max) {
@@ -82,6 +91,7 @@ displayPuzzle() {
 
     this.setState({puzzle: puzzle});
   }
+
   success() {
     const { puzzle } = this.state;
     const { successPuzzle } = this.props;
@@ -97,7 +107,9 @@ displayPuzzle() {
     return isWon;
   }
 
-
+  buttonPress = () =>{
+    return this.generateShufflePuzzle(this.state.puzzle)
+  }
 
 
   render() {
@@ -107,10 +119,12 @@ displayPuzzle() {
         {this.displayPuzzle()}
         {this.success() && <div>YOU ARE A WINER</div>}
         <div>
-        <button  onClick={()=>this.generateShufflePuzzle(this.state.puzzle)}> PLAY
-
-
-      </button>
+        <button  onClick={this.buttonPress}> BEGIN GAME
+        </button>
+        </div>
+        <div>
+        <button onClick={this.buttonPress}> START NEW GAME
+        </button>
         </div>
 
     </div>
